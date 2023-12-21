@@ -15,9 +15,16 @@ namespace TravelApi.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Review>>> Get()
+    public async Task<ActionResult<IEnumerable<Review>>> Get(string city)
     {
-      return await _db.Reviews.ToListAsync();
+      IQueryable<Review> query = _db.Reviews.AsQueryable();
+
+      if (city != null)
+      {
+        query = query.Where(entry => entry.City == city);
+      }
+
+      return await query.ToListAsync();
     }
 
     [HttpGet("{id}")]
