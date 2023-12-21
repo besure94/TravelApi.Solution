@@ -1,11 +1,11 @@
 namespace TravelApi.Models
 {
-  public class TravelDestination
+  public class Review
   {
-    public int TravelDestinationId { get; set; }
+    public int ReviewId { get; set; }
     public string City { get; set; }
     public string Country { get; set; }
-    public string Reviews { get; set; }
+    public string Message { get; set; }
     public int NumberOfReviews { get; set; }
     public int OverallRating { get; set; }
   }
