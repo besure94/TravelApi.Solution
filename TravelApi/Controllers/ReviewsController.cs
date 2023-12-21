@@ -15,7 +15,7 @@ namespace TravelApi.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Review>>> Get(string city, string country)
+    public async Task<ActionResult<IEnumerable<Review>>> Get(string city, string country, int rating)
     {
       IQueryable<Review> query = _db.Reviews.AsQueryable();
 
@@ -27,6 +27,11 @@ namespace TravelApi.Controllers
       if (country != null)
       {
         query = query.Where(entry => entry.Country == country);
+      }
+
+      if (rating > 0)
+      {
+        query = query.Where(entry => entry.Rating >= rating).OrderByDescending(entry => entry.Rating);
       }
 
       return await query.ToListAsync();
