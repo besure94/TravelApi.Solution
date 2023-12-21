@@ -6,7 +6,7 @@ namespace TravelApi.Models
     public string City { get; set; }
     public string Country { get; set; }
     public string Message { get; set; }
-    public int NumberOfReviews { get; set; }
-    public int OverallRating { get; set; }
+    // public int NumberOfReviews { get; set; }
+    // public int OverallRating { get; set; }
   }
 }
