@@ -6,10 +6,10 @@ namespace TravelApi.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class TravelDestinationsController : ControllerBase
+  public class ReviewsController : ControllerBase
   {
     private readonly TravelApiContext _db;
-    public TravelDestinationsController(TravelApiContext db)
+    public ReviewsController(TravelApiContext db)
     {
       _db = db;
     }
@@ -18,6 +18,19 @@ namespace TravelApi.Controllers
     public async Task<ActionResult<IEnumerable<Review>>> Get()
     {
       return await _db.Reviews.ToListAsync();
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Review>> GetReview(int id)
+    {
+      Review review = await _db.Reviews.FindAsync(id);
+
+      if (review == null)
+      {
+        return NotFound();
+      }
+
+      return review;
     }
   }
 }
