@@ -8,5 +8,6 @@ namespace TravelApi.Models
     public string Message { get; set; }
     // public int NumberOfReviews { get; set; }
     public int Rating { get; set; }
+    public string Author { get; set; }
   }
 }
