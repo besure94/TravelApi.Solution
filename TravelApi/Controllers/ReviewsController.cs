@@ -15,7 +15,7 @@ namespace TravelApi.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Review>>> Get(string city, string country, int rating, string random)
+    public async Task<ActionResult<IEnumerable<Review>>> Get(string city, string country, int rating, string random, int pageNumber)
     {
       IQueryable<Review> query = _db.Reviews.AsQueryable();
 
@@ -32,6 +32,17 @@ namespace TravelApi.Controllers
       if (rating > 0)
       {
         query = query.Where(entry => entry.Rating >= rating).OrderByDescending(entry => entry.Rating);
+      }
+
+      if (pageNumber > 0)
+      {
+        int pageSize = 5;
+        List<Review> paginatedQueryReviews = await query
+        .Skip((pageNumber - 1) * pageSize)
+        .Take(pageSize)
+        .ToListAsync();
+
+        return paginatedQueryReviews;
       }
 
       List<Review> queryReviews = await query.ToListAsync();
@@ -125,5 +136,7 @@ namespace TravelApi.Controllers
 
       return NoContent();
     }
+
+    // could create a List using Review class and set private properties for pageIndex and TotalPages
   }
 }
