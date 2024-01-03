@@ -87,3 +87,4 @@ PUT http://localhost:7245/api/Reviews/{id}
 DELETE http://localhost:7245/api/Reviews/{id}
 ```
 
+Note: `{id}` is a variable and should be replaced with the id number of the review that you want to GET, PUT, or DELETE. The id will be automatically created when you POST a review.
