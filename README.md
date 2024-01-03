@@ -169,20 +169,9 @@ When making a PUT request such as `http://localhost:7245/api/reviews/{id}?author
 
 #### Additional Requirements for DELETE Request
 
-Just like PUT requests, DELETE requests can only be made if the review was written by the person who wrote it. In other words, the author's name in the query must match the `author` property in the review.
+Just like PUT requests, DELETE requests can only be made if the review was written by the person who wrote it. In other words, the author's name in the query must match the `author` property in the review. The `reviewId` property must match as well.
 
-When making a DELETE request such as `http://localhost:7245/api/reviews/{id}?author=Christopher`, your request needs to include a "body" that includes the review's `reviewId` property, and the review's `author` property. Example below:
-
-```json
-{
-  "reviewId": 1,
-  "city": "Cape Town",
-  "country": "South Africa",
-  "message": "Warm, beautiful and great beaches!",
-  "rating": 10,
-  "author": "Christopher"
-}
-```
+For example, making a DELETE request such as `http://localhost:7245/api/reviews/{id}?author=Christopher` will successfully delete a review. as long as the id and author name match the values for the review's id and author properties.
 
 ## Known Bugs
 
