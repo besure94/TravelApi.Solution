@@ -32,7 +32,7 @@ dotnet tool install --global dotnet-ef --version 6.0.0
 
 1. Select the green button that says "Code", and clone this repository to your desktop.
 2. Open the terminal and navigate to this project's production directory called `TravelApi`.
-2. Inside this production directory, create two new files: `appsettings.json` and `appsettings.Development.json`.
+3. Inside this production directory, create two new files: `appsettings.json` and `appsettings.Development.json`.
 4. In the `appsettings.json` file, enter the following code. Make sure to replace the `uid` and `pwd` values in the MySQL database connection string with your own username and password for MySQL. For the LearnHowToProgram.com lessons, always assume the `uid` is `root` and the `pwd` is `epicodus`.
 
 ```json
@@ -171,7 +171,7 @@ When making a PUT request such as `http://localhost:7245/api/reviews/{id}?author
 
 Just like PUT requests, DELETE requests can only be made if the review was written by the person who wrote it. In other words, the author's name in the query must match the `author` property in the review. The `reviewId` property must match as well.
 
-For example, making a DELETE request such as `http://localhost:7245/api/reviews/{id}?author=Christopher` will successfully delete a review. as long as the id and author name match the values for the review's id and author properties.
+For example, making a DELETE request such as `http://localhost:7245/api/reviews/{id}?author=Christopher` will successfully delete a review, as long as the id and author name match the values for the review's id and author properties.
 
 ## Known Bugs
 
