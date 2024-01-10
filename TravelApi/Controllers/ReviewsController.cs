@@ -79,6 +79,8 @@ namespace TravelApi.Controllers
       return CreatedAtAction(nameof(GetReview), new { id = review.ReviewId }, review);
     }
 
+    // author requirement not documented on swagger
+    // change docs or could remove author parameter and lines 92-95
     [HttpPut("{id}")]
     public async Task<IActionResult> Put(int id, string author, Review review)
     {
@@ -137,6 +139,5 @@ namespace TravelApi.Controllers
       return NoContent();
     }
 
-    // could create a List using Review class and set private properties for pageIndex and TotalPages
   }
 }
