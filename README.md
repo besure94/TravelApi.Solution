@@ -12,9 +12,11 @@
 
 ## Description
 
-<!-- This application has full CRUD (Create, Read, Update, Delete) functionality, and allows users to GET, POST, PUT, and DELETE reviews about various travel destinations. Users can GET (Read) and POST (Create) reviews about travel destinations. To POST a review, they enter a city, country, message, rating, and their name.
+**Please note**: This documentation is for the `mvc-client-branch`, and corresponds to the TravelClient repository. The documentation here is different from the documentation from the `main` branch for this repository.
 
-They can also GET reviews by entering a country, city, ID, rating, or by entering a "random" query. A user can also PUT (Edit) and DELETE (Delete) reviews, but only if they wrote them. The "author" name for the review must match the input for the "author" query in the request. -->
+This application has full CRUD (Create, Read, Update, Delete) functionality, and allows users to GET, POST, PUT, and DELETE reviews about various travel destinations. Users can GET (Read) and POST (Create) reviews about travel destinations. To POST a review, they enter a city, country, message, rating, and their name.
+
+They can also GET reviews by entering a country, city, ID, or rating. A user can also PUT (Edit) and DELETE (Delete) reviews.
 
 ## Setup Instructions
 
@@ -97,8 +99,6 @@ GET requests to `http://localhost:7245/api/reviews/` can optionally include quer
 | city    | String      | not required | Returns reviews with a matching city value. |
 | country        | String      | not required | Returns reviews with a matching country value. |
 | rating  | Number      | not required | Returns reviews that have a rating value that is greater than or equal to the specified rating value. Sorts filtered reviews from highest rated to lowest. |
-| random    | String      | not required | Returns a single random review. |
-| pageNumber       | Number      | not required | Returns five reviews from a specified page number. |
 
 The following query will return all reviews with a city value of "Dublin":
 
@@ -116,18 +116,6 @@ The following query will return all reviews with a rating of 7 and higher (ratin
 
 ```
 GET http://localhost:7245/api/reviews?rating=7
-```
-
-The following query will return a single random review:
-
-```
-GET http://localhost:7245/api/reviews?random=random
-```
-
-The following query will return five reviews from page three of the reviews list:
-
-```
-GET http://localhost:7245/api/reviews?pageNumber=3
 ```
 
 You can include multiple query strings by separating them with an `&`:
@@ -152,9 +140,7 @@ When making a POST request to `http://localhost:7245/api/reviews/`, your request
 
 #### Additional Requirements for PUT Request
 
-PUT requests can only be made if the review was written by the person who wrote it. In other words, the author's name in the query must match the `author` property in the review.
-
-When making a PUT request such as `http://localhost:7245/api/reviews/{id}?author=Christopher`, your request needs to include a "body" that includes the review's `reviewId` property, and the review's `author` property. Example below:
+When making a PUT request such as `http://localhost:7245/api/reviews/{id}`, your request needs to include a "body" that includes the review's `reviewId` property. Example below:
 
 ```json
 {
@@ -169,9 +155,7 @@ When making a PUT request such as `http://localhost:7245/api/reviews/{id}?author
 
 #### Additional Requirements for DELETE Request
 
-Just like PUT requests, DELETE requests can only be made if the review was written by the person who wrote it. In other words, the author's name in the query must match the `author` property in the review. The `reviewId` property must match as well.
-
-For example, making a DELETE request such as `http://localhost:7245/api/reviews/{id}?author=Christopher` will successfully delete a review, as long as the id and author name match the values for the review's id and author properties.
+When making a DELETE request such as `http://localhost:7245/api/reviews/{id}` will successfully delete a review, as long as the `id` matches the `reviewId` of the review you want to delete.
 
 ## Known Bugs
 
