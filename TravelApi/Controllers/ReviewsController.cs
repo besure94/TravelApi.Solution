@@ -60,8 +60,6 @@ namespace TravelApi.Controllers
       return CreatedAtAction(nameof(GetReview), new { id = review.ReviewId }, review);
     }
 
-    // change docs to update that PUT and DELETE requests do not need an author for the MVC client app //
-
     [HttpPut("{id}")]
     public async Task<IActionResult> Put(int id, Review review)
     {

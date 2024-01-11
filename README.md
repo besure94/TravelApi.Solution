@@ -12,9 +12,9 @@
 
 ## Description
 
-This application has full CRUD (Create, Read, Update, Delete) functionality, and allows users to GET, POST, PUT, and DELETE reviews about various travel destinations. Users can GET (Read) and POST (Create) reviews about travel destinations. To POST a review, they enter a city, country, message, rating, and their name.
+<!-- This application has full CRUD (Create, Read, Update, Delete) functionality, and allows users to GET, POST, PUT, and DELETE reviews about various travel destinations. Users can GET (Read) and POST (Create) reviews about travel destinations. To POST a review, they enter a city, country, message, rating, and their name.
 
-They can also GET reviews by entering a country, city, ID, rating, or by entering a "random" query. A user can also PUT (Edit) and DELETE (Delete) reviews, but only if they wrote them. The "author" name for the review must match the input for the "author" query in the request.
+They can also GET reviews by entering a country, city, ID, rating, or by entering a "random" query. A user can also PUT (Edit) and DELETE (Delete) reviews, but only if they wrote them. The "author" name for the review must match the input for the "author" query in the request. -->
 
 ## Setup Instructions
 
