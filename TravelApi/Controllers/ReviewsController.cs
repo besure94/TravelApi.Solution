@@ -79,17 +79,12 @@ namespace TravelApi.Controllers
       return CreatedAtAction(nameof(GetReview), new { id = review.ReviewId }, review);
     }
 
-    // author requirement not documented on swagger
-    // change docs or could remove author parameter and lines 92-95
+    // change docs to update that PUT and DELETE requests do not need an author for the MVC client app //
+
     [HttpPut("{id}")]
-    public async Task<IActionResult> Put(int id, string author, Review review)
+    public async Task<IActionResult> Put(int id, Review review)
     {
       if (id != review.ReviewId)
-      {
-        return BadRequest();
-      }
-
-      if (author.ToLower() != review.Author.ToLower())
       {
         return BadRequest();
       }
@@ -120,17 +115,12 @@ namespace TravelApi.Controllers
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteReview(int id, string author)
+    public async Task<IActionResult> DeleteReview(int id)
     {
       Review review = await _db.Reviews.FindAsync(id);
       if (review == null)
       {
         return NotFound();
-      }
-
-      if (author.ToLower() != review.Author.ToLower())
-      {
-        return BadRequest();
       }
 
       _db.Reviews.Remove(review);
