@@ -15,7 +15,7 @@ namespace TravelApi.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Review>>> Get(string city, string country, int rating, string random, int pageNumber)
+    public async Task<ActionResult<IEnumerable<Review>>> Get(string city, string country, int rating)
     {
       IQueryable<Review> query = _db.Reviews.AsQueryable();
 
@@ -34,26 +34,7 @@ namespace TravelApi.Controllers
         query = query.Where(entry => entry.Rating >= rating).OrderByDescending(entry => entry.Rating);
       }
 
-      if (pageNumber > 0)
-      {
-        int pageSize = 5;
-        List<Review> paginatedQueryReviews = await query
-        .Skip((pageNumber - 1) * pageSize)
-        .Take(pageSize)
-        .ToListAsync();
-
-        return paginatedQueryReviews;
-      }
-
       List<Review> queryReviews = await query.ToListAsync();
-
-      if (random == "random" || random == "Random")
-      {
-        Random randomObject = new Random();
-        int randomReviewIndex = randomObject.Next(0, queryReviews.Count);
-        List<Review> result = new List<Review>{queryReviews[randomReviewIndex]};
-        return result;
-      }
 
       return queryReviews;
     }
